@@ -1,0 +1,37 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Notice {
+  id        String     @id @default(cuid())
+  title     String     @db.VarChar(255)
+  body      String     @db.LongText
+  category  Category   @default(GENERAL)
+  priority  Priority   @default(NORMAL)
+  publishDate DateTime  @default(now())
+  image     String?    @db.VarChar(500)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  @@index([priority])
+  @@index([publishDate])
+}
+
+enum Category {
+  EXAM
+  EVENT
+  GENERAL
+}
+
+enum Priority {
+  NORMAL
+  URGENT
+}

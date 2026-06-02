@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f9fafb;
+  color: #1f2937;
+}
+
+.urgent-badge {
+  @apply inline-block bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold;
+}
+
+.category-badge {
+  @apply inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-semibold;
+}
